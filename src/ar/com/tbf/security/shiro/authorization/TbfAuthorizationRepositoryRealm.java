@@ -4,6 +4,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.cache.Cache;
@@ -31,6 +32,13 @@ public class TbfAuthorizationRepositoryRealm extends CasRealm {
 		this.repository = repository;
 		
 		LOG.info("Repository is "+ this.repository == null ? "not set" : "set");
+	}
+	
+	public boolean supports (AuthenticationToken token){
+
+		LOG.debug("TBF CasAuthenticatorRealm supports");
+
+		return true;
 	}
 	
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
