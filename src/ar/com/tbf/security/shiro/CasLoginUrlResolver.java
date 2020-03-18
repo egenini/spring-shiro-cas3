@@ -79,7 +79,7 @@ public class CasLoginUrlResolver {
 
 		if( this.getCasServerScheme() == null ){
 			
-			setCasServerScheme(request.getScheme());
+			setCasServerScheme(RequestResponseAccessibility.getScheme());
 		}
 
 		if( this.getCasServerName() == null ){
