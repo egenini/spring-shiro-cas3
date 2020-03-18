@@ -81,6 +81,7 @@ public class CasLoginUrlResolver {
 			
 			setCasServerScheme(request.getScheme());
 		}
+
 		if( this.getCasServerName() == null ){
 			
 			setCasServerName(request.getServerName());
