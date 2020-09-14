@@ -59,12 +59,16 @@ public class CasLoginUrlResolver {
 
 		this.casRealm.setCasServerUrlPrefix( this.properties.getServerUrlPrefix() );
 		this.casRealm.setCasService(         this.properties.getService()         );
-		
 	}
 	
 	public CasRealm getResolve(){
 		
 		return this.casRealm;
+	}
+	
+	public String getLogoutUrl(){
+		
+		return casRealm.getCasServerUrlPrefix() + "/logout";
 	}
 	
 	public String getLoginUrl(){
@@ -94,7 +98,7 @@ public class CasLoginUrlResolver {
 		// service
 		if( this.getCasServiceScheme() == null ){
 			
-			setCasServiceScheme( request.getScheme());
+			setCasServiceScheme( RequestResponseAccessibility.getScheme() );
 		}
 		if( this.getCasServiceName() == null ){
 			
@@ -334,5 +338,9 @@ public class CasLoginUrlResolver {
 
 	public void setProperties(CasLoginUrlResolverProperties properties) {
 		this.properties = properties;
+	}
+
+	public String casService() {
+		return this.casRealm.getCasService();
 	}
 }

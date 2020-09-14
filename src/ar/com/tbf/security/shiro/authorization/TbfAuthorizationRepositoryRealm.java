@@ -73,12 +73,12 @@ public class TbfAuthorizationRepositoryRealm extends CasRealm {
 
 		String subject = (String) principals.getPrimaryPrincipal();
 		
-		List<RecursiveGroupPermission> permisos = repository.allFromSubject(subject);
+		List<Object[]> permisos = repository.allFromSubject(subject);
 		
-		for( RecursiveGroupPermission permiso : permisos ) {
+		for( Object[] permiso : permisos ) {
 			
-    		roles.add(       permiso.getName()       );
-    		permissions.add( permiso.getPermission() );
+    		roles.add(       (String) permiso[1] );
+    		permissions.add( (String) permiso[5] );
 		}
 		
 	    authorizationInfo.setStringPermissions( permissions );
